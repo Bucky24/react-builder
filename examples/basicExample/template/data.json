@@ -1,0 +1,12 @@
+{
+    "nav": [
+        {
+            "title": "Home",
+            "link": "/"
+        },
+        {
+            "title": "Calendar",
+            "link": "/calendar"
+        }
+    ]
+}

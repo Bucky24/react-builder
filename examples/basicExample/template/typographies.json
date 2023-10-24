@@ -1,0 +1,16 @@
+{
+    "title": {
+        "family": "jost",
+        "size": 55,
+        "weight": 400,
+        "line-height": 66,
+        "letter-spacing": 3
+    },
+    "nav": {
+        "family": "'Bebas Neue",
+        "size": 18,
+        "weight": 400,
+        "line-height": 24,
+        "letter-spacing": 1
+    }
+}
