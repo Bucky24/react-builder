@@ -5,7 +5,16 @@ import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
 import BuilderContext from '../contexts/BuilderContext';
 
 export default function AdminBar() {
-    const { admin, setAdmin, selected, setSelected, typographies, setSetting, settings } = useContext(BuilderContext);
+    const { 
+        admin,
+        setAdmin,
+        selected,
+        setSelected,
+        typographies,
+        setSetting,
+        settings,
+        colors,
+    } = useContext(BuilderContext);
 
     if (!admin) {
         return <div
@@ -54,6 +63,14 @@ export default function AdminBar() {
                         <option value="">Default</option>
                         {Object.keys(typographies).map((name) => {
                             return <option key={`font_${name}`} value={name}>{name}</option>
+                        })}
+                    </select>
+                    <select value={settings.color} onChange={(e) => {
+                        setSetting(selected, "color", e.target.value);
+                    }}>
+                        <option value="">Default</option>
+                        {Object.keys(colors).map((name) => {
+                            return <option key={`color_${name}`} value={name}>{name}</option>
                         })}
                     </select>
                 </div>}

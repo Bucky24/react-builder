@@ -4,7 +4,7 @@ import BuilderContext from '../contexts/BuilderContext';
 
 export default function BuilderRepeat({ dataKey, element, id }) {
     const { data } = useContext(BuilderContext);
-    
+
     const myData = data[dataKey] || [];
 
     return myData.map((item, index) => {

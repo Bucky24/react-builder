@@ -5,8 +5,8 @@ const BuilderContext = React.createContext({});
 export default BuilderContext;
 
 export function BuilderProvider({ children, typographies, data, colors }) {
-    const [admin, setAdmin] = useState(true);
-    const [selected, setSelected] = useState('nav_title');
+    const [admin, setAdmin] = useState(false);
+    const [selected, setSelected] = useState();
     const [settings, setSettings] = useState({});
 
     typographies = typographies || {};

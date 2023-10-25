@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import BuilderContext from '../contexts/BuilderContext';
 
-export default function BuilderText({ children, font, id }) {
-    const { typographies, admin, setSelected, selected, settings } = useContext(BuilderContext);
+export default function BuilderText({ children, font, id, color }) {
+    const { typographies, admin, setSelected, selected, settings, colors } = useContext(BuilderContext);
 
     const activeSettings = {
         font,
+        color,
         ...settings[id],
     };
 
@@ -20,6 +21,10 @@ export default function BuilderText({ children, font, id }) {
         styles.fontWeight = typography.weight;
         styles.letterSpacing = typography['letter-spacing'] + "px";
         styles.lineHeight = typography['line-height'] + "px";
+    }
+
+    if (activeSettings.color && colors[activeSettings.color]) {
+        styles.color = colors[activeSettings.color];
     }
 
     if (admin) {
