@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import BuilderContext from '../contexts/BuilderContext';
 
-export default function BuilderText({ children, font }) {
-    const { typographies } = useContext(BuilderContext);
+export default function BuilderText({ children, font, id }) {
+    const { typographies, admin, setSelected, selected } = useContext(BuilderContext);
 
     const text = Array.isArray(children) ? children[0] : children;
 
@@ -17,5 +17,24 @@ export default function BuilderText({ children, font }) {
         styles.lineHeight = typography['line-height'] + "px";
     }
 
-    return <span style={styles}>{text}</span>;
+    if (admin) {
+        styles.outline = "1px solid black";
+        styles.cursor = "pointer";
+
+        if (selected === id) {
+            styles.outlineColor = "red";
+        }
+    }
+
+    return <span
+        id={id}
+        style={styles}
+        onClick={(e) => {
+            if (admin) {
+                e.stopPropagation();
+
+                setSelected(id);
+            }
+        }}
+    >{text}</span>;
 }

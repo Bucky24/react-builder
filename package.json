@@ -26,11 +26,13 @@
         "style-loader": "2.0.0",
         "webpack": "5.74.0",
         "webpack-cli": "4.10.0",
-        "webpack-dev-server": "4.7.4",
-        "react-router-dom": "^6.17.0"
+        "webpack-dev-server": "4.7.4"
     },
     "peerDependencies": {
         "react": "^18.x.x"
+    },
+    "dependencies": {
+        "react-router-dom": "^6.17.0"
     },
     "files": [
         "build"

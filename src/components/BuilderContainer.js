@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-export default function BuilderContainer({ children, flex, flexGrow, flexCol, ...props }) {
+import BuilderContext from '../contexts/BuilderContext';
+
+export default function BuilderContainer({ children, flex, flexGrow, flexCol, bgColor, ...props }) {
+    const { colors } = useContext(BuilderContext);
+
     const styles = {
         ...props.style,
     };
@@ -20,6 +24,10 @@ export default function BuilderContainer({ children, flex, flexGrow, flexCol, ..
 
     if (flexCol) {
         styles.flexDirection = "column";
+    }
+
+    if (bgColor) {
+        styles.backgroundColor = colors[bgColor];
     }
 
     return <div {...props} style={styles}>
