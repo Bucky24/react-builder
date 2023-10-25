@@ -5,8 +5,9 @@ const BuilderContext = React.createContext({});
 export default BuilderContext;
 
 export function BuilderProvider({ children, typographies, data, colors }) {
-    const [admin, setAdmin] = useState(false);
-    const [selected, setSelected] = useState(null);
+    const [admin, setAdmin] = useState(true);
+    const [selected, setSelected] = useState('nav_title');
+    const [settings, setSettings] = useState({});
 
     typographies = typographies || {};
     data = data || {};
@@ -20,6 +21,25 @@ export function BuilderProvider({ children, typographies, data, colors }) {
         colors,
         setSelected,
         selected,
+        settings,
+        setSetting: (id, key, value) => {
+            if (value === "") {
+                const newSettings = settings[id] || {};
+                delete newSettings[key];
+                setSettings({
+                    ...settings,
+                    [id]: newSettings,
+                })
+            } else {
+                setSettings({
+                    ...settings,
+                    [id]: {
+                        ...settings?.[id],
+                        [key]: value,
+                    },
+                });
+            }
+        }
     };
 
     return <BuilderContext.Provider value={value}>

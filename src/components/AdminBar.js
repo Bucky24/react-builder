@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
 
 import BuilderContext from '../contexts/BuilderContext';
 
 export default function AdminBar() {
-    const { admin, setAdmin, selected } = useContext(BuilderContext);
+    const { admin, setAdmin, selected, setSelected, typographies, setSetting, settings } = useContext(BuilderContext);
 
     if (!admin) {
         return <div
             style={{
                 position: 'fixed',
-                left: 10,
+                right: 10,
                 top: 10,
+                cursor: 'pointer',
             }}
             onClick={() => {
                 setAdmin(true);
@@ -21,6 +22,8 @@ export default function AdminBar() {
             <FontAwesomeIcon icon={faBars} />
         </div>;
     }
+
+    const activeSettings = settings[selected] || {};
 
     return <div style={{
         position: 'relative',
@@ -33,13 +36,39 @@ export default function AdminBar() {
             padding: 10,
             height: 30,
             position: 'fixed',
-            width: '100%',
+            width: 'calc(100% - 20px)',
             top: 0,
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
         }}>
-            {!selected && "Select an element"}
-            {selected && <div>
-                Selected {selected}
-            </div>}
+            <div>
+                {!selected && "Select an element"}
+                {selected && <div style={{ display: 'flex' }}>
+                    <div>
+                        Selected {selected}
+                    </div>
+                    <select value={settings.font} onChange={(e) => {
+                        setSetting(selected, "font", e.target.value);
+                    }}>
+                        <option value="">Default</option>
+                        {Object.keys(typographies).map((name) => {
+                            return <option value={name}>{name}</option>
+                        })}
+                    </select>
+                </div>}
+            </div>
+            <div
+                style={{
+                    cursor: 'pointer'
+                }}
+                onClick={() => {
+                    setAdmin(false);
+                    setSelected(null);
+                }}
+            >
+                <FontAwesomeIcon icon={faClose} />
+            </div>
         </div>
     </div>
 }
