@@ -23,7 +23,8 @@ export default function BuilderText({ children, font, id }) {
     }
 
     if (admin) {
-        styles.outline = "1px solid black";
+        styles.outline = "1px solid";
+        styles.outlineColor = "black";
         styles.cursor = "pointer";
 
         if (selected === id) {
