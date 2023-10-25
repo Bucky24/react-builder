@@ -53,7 +53,7 @@ export default function AdminBar() {
                     }}>
                         <option value="">Default</option>
                         {Object.keys(typographies).map((name) => {
-                            return <option value={name}>{name}</option>
+                            return <option key={`font_${name}`} value={name}>{name}</option>
                         })}
                     </select>
                 </div>}
