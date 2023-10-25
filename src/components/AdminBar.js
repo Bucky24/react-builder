@@ -53,26 +53,32 @@ export default function AdminBar() {
         }}>
             <div>
                 {!selected && "Select an element"}
-                {selected && <div style={{ display: 'flex' }}>
+                {selected && <div style={{ display: 'flex', columnGap: 10 }}>
                     <div>
                         Selected {selected}
                     </div>
-                    <select value={settings.font} onChange={(e) => {
-                        setSetting(selected, "font", e.target.value);
-                    }}>
-                        <option value="">Default</option>
-                        {Object.keys(typographies).map((name) => {
-                            return <option key={`font_${name}`} value={name}>{name}</option>
-                        })}
-                    </select>
-                    <select value={settings.color} onChange={(e) => {
-                        setSetting(selected, "color", e.target.value);
-                    }}>
-                        <option value="">Default</option>
-                        {Object.keys(colors).map((name) => {
-                            return <option key={`color_${name}`} value={name}>{name}</option>
-                        })}
-                    </select>
+                    <div>
+                        <label>Font</label>
+                        <select value={settings.font} onChange={(e) => {
+                            setSetting(selected, "font", e.target.value);
+                        }}>
+                            <option value="">Default</option>
+                            {Object.keys(typographies).map((name) => {
+                                return <option key={`font_${name}`} value={name}>{name}</option>
+                            })}
+                        </select>
+                    </div>
+                    <div>
+                        <label>Color</label>
+                        <select value={settings.color} onChange={(e) => {
+                            setSetting(selected, "color", e.target.value);
+                        }}>
+                            <option value="">Default</option>
+                            {Object.keys(colors).map((name) => {
+                                return <option key={`color_${name}`} value={name}>{name}</option>
+                            })}
+                        </select>
+                    </div>
                 </div>}
             </div>
             <div

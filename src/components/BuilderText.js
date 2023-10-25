@@ -38,7 +38,6 @@ export default function BuilderText({ children, font, id, color }) {
     }
 
     return <span
-        id={id}
         style={styles}
         onClick={(e) => {
             if (admin) {

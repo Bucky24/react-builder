@@ -22,7 +22,7 @@ export default function Header() {
                         color: 'inherit',
                         textDecoration: 'none',
                     }}>
-                        <BuilderText id={data.title} font="nav">{data.title}</BuilderText>
+                        <BuilderText id="nav_item" font="nav">{data.title}</BuilderText>
                     </BuilderLink>;
                 }} />
             </BuilderContainer>
