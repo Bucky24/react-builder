@@ -32,6 +32,9 @@
     "peerDependencies": {
         "react": "^18.x.x"
     },
+    "dependencies": {
+        "react-router-dom": "^6.17.0"
+    },
     "files": [
         "build"
     ],

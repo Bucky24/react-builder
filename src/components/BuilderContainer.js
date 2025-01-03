@@ -2,9 +2,9 @@ import React, { useContext, useRef } from 'react';
 
 import BuilderContext from '../contexts/BuilderContext';
 
-export default function BuilderContainer({ children, flex, flexGrow, flexCol, ...props }) {
-    const { admin, generateId, activeId, setActiveId } = useContext(BuilderContext);
-    const idRef = useRef(generateId());
+export default function BuilderContainer({ children, flex, flexGrow, flexCol, bgColor, id, ...props }) {
+    const { admin, generateId, selected, setSelected, colors } = useContext(BuilderContext);
+    const idRef = useRef(id || generateId());
 
     const styles = {
         ...props.style,
@@ -27,8 +27,18 @@ export default function BuilderContainer({ children, flex, flexGrow, flexCol, ..
         styles.flexDirection = "column";
     }
 
-    if (admin && activeId === idRef.current) {
-        styles.outline = "1px solid #0f0";
+    if (bgColor) {
+        styles.backgroundColor = colors[bgColor];
+    }
+
+    if (admin) {
+        styles.outline = "1px solid";
+        styles.outlineColor = "#000";
+        styles.cursor = "pointer";
+
+        if (selected === idRef.current) {
+            styles.outlineColor = "#f00";
+        }
     }
 
     return <div
@@ -36,7 +46,7 @@ export default function BuilderContainer({ children, flex, flexGrow, flexCol, ..
         style={styles}
         onClick={(...args) => {
             if (admin) {
-                setActiveId(idRef.current);
+                setSelected(idRef.current);
                 return;
             }
 
