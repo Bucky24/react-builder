@@ -44,14 +44,16 @@ export default function BuilderContainer({ children, flex, flexGrow, flexCol, bg
     return <div
         {...props}
         style={styles}
-        onClick={(...args) => {
+        onClick={(event) => {
             if (admin) {
                 setSelected(idRef.current);
+                event.stopPropagation();
+                event.preventDefault();
                 return;
             }
 
             if (props.onClick) {
-                props.onClick(...args);
+                props.onClick(event);
             }
         }}
     >
