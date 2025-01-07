@@ -59,7 +59,7 @@ export default function AdminBar() {
                     </div>
                     <div>
                         <label>Font</label>
-                        <select value={settings.font} onChange={(e) => {
+                        <select value={activeSettings.font ?? ""} onChange={(e) => {
                             setSetting(selected, "font", e.target.value);
                         }}>
                             <option value="">Default</option>
@@ -70,7 +70,7 @@ export default function AdminBar() {
                     </div>
                     <div>
                         <label>Color</label>
-                        <select value={settings.color} onChange={(e) => {
+                        <select value={activeSettings.color ?? ""} onChange={(e) => {
                             setSetting(selected, "color", e.target.value);
                         }}>
                             <option value="">Default</option>
@@ -78,6 +78,12 @@ export default function AdminBar() {
                                 return <option key={`color_${name}`} value={name}>{name}</option>
                             })}
                         </select>
+                    </div>
+                    <div>
+                        <label>Text</label>
+                        <input type="text" value={activeSettings.text ?? ''} onChange={(e) => {
+                            setSetting(selected, "text", e.target.value);
+                        }}/>
                     </div>
                 </div>}
             </div>

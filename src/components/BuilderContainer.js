@@ -1,48 +1,17 @@
 import React, { useContext, useRef } from 'react';
 
 import BuilderContext from '../contexts/BuilderContext';
+import useGetStyles from '../hooks/useGetStyles';
 
-export default function BuilderContainer({ children, flex, flexGrow, flexCol, bgColor, id, ...props }) {
-    const { admin, generateId, selected, setSelected, colors } = useContext(BuilderContext);
+export default function BuilderContainer({ children, id, ...props }) {
+    const { admin, generateId, setSelected } = useContext(BuilderContext);
     const idRef = useRef(id || generateId());
+    const getStyles = useGetStyles();
 
-    const styles = {
-        ...props.style,
-    };
-
-    if (flex) {
-        const [justify, align] = flex.split(" ");
-        styles.display = "flex";
-        styles.justifyContent = justify;
-        styles.alignItems = align;
-    }
-
-    if (flexGrow) {
-        styles.flexGrow = 1;
-        styles.flexShrink = 0;
-        styles.flexBasis = 0;
-    }
-
-    if (flexCol) {
-        styles.flexDirection = "column";
-    }
-
-    if (bgColor) {
-        styles.backgroundColor = colors[bgColor];
-    }
-
-    if (admin) {
-        styles.outline = "1px solid";
-        styles.outlineColor = "#000";
-        styles.cursor = "pointer";
-
-        if (selected === idRef.current) {
-            styles.outlineColor = "#f00";
-        }
-    }
+    const { styles, propsWithoutStyles } = getStyles(props, idRef.current);
 
     return <div
-        {...props}
+        {...propsWithoutStyles}
         style={styles}
         onClick={(event) => {
             if (admin) {
