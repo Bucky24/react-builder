@@ -7,7 +7,10 @@ export default function BuilderLink({ children, ...props }) {
     const { admin } = useContext(BuilderContext);
 
     if (admin) {
-        return <a {...props} href="#">{children}</a>;
+        return <a {...props} onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+        }}>{children}</a>;
     } else {
         return <Link {...props}>{children}</Link>;
     }

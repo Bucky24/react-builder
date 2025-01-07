@@ -16,6 +16,13 @@ export default function AdminBar() {
         colors,
     } = useContext(BuilderContext);
 
+    const search = window.location.search;
+    const allowAdmin = search.includes("?admin=1") || search.includes("&admin=1");
+
+    if (!allowAdmin) {
+        return;
+    }
+
     if (!admin) {
         return <div
             style={{
