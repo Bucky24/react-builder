@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@bucky24/node-php':
+        specifier: ^0.7.15
+        version: 0.7.15
+      react-router-dom:
+        specifier: ^6.17.0
+        version: 6.28.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       uuid:
         specifier: ^11.0.3
         version: 11.0.3
@@ -60,9 +66,6 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
-      react-router-dom:
-        specifier: ^6.17.0
-        version: 6.28.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       style-loader:
         specifier: 2.0.0
         version: 2.0.0(webpack@5.74.0)
@@ -610,6 +613,9 @@ packages:
   '@babel/types@7.26.3':
     resolution: {integrity: sha512-vN5p+1kl59GVKMvTHt55NzzmYVxprfJD+ql7U9NFIfKCBkYE55LYtS+WtPlaYOyzydrKI8Nezd+aZextrd+FMA==}
     engines: {node: '>=6.9.0'}
+
+  '@bucky24/node-php@0.7.15':
+    resolution: {integrity: sha512-4ie7h9dZwNdy36xk71y871QHAgJXvBkyr68TsmEtrQwW2zjr8BfzPfzDE/WMVW1RRdvLS+rRpKY99hY5yJiinw==}
 
   '@discoveryjs/json-ext@0.5.7':
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
@@ -3131,6 +3137,8 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
+
+  '@bucky24/node-php@0.7.15': {}
 
   '@discoveryjs/json-ext@0.5.7': {}
 

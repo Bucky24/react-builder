@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AdminBar from '../components/AdminBar';
 import { v4 } from 'uuid';
 
@@ -9,6 +9,24 @@ export function BuilderProvider({ children, typographies, data, colors }) {
     const [admin, setAdmin] = useState(false);
     const [selected, setSelected] = useState('nav_title');
     const [settings, setSettings] = useState({});
+
+    useEffect(() => {
+        fetch("./api.php?method=getSettings").then((data) => {
+            if (data.ok) {
+                data.json().then((data) => {
+                    if (!data.success) {
+                        console.error(data.error);
+                    } else {
+                        console.log(data);
+                    }
+                });
+            } else {
+                data.json().then((data) => {
+                    console.error(data.error);
+                });
+            }
+        });
+    }, []);
 
     typographies = typographies || {};
     data = data || {};

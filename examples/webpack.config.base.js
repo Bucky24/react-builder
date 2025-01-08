@@ -67,6 +67,11 @@ module.exports = (dirname) => {
         devtool: 'source-map',
         devServer: {
             historyApiFallback: true,
+            proxy: {
+                '/api.php': {
+                    target: 'http://localhost:3000',
+                },
+            },
         },
         plugins: [
             new HtmlWebpackPlugin({
